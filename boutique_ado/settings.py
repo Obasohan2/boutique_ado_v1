@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Third-party apps - DJANGO ALLAUTH
+    'django.contrib.sites',  # Required for allauth
+    'allauth',  # Django allauth for authentication and registration
+    'allauth.account',  # Django allauth account management
+    'allauth.socialaccount',  # Django allauth social account management
 ]
 
 MIDDLEWARE = [
@@ -59,13 +64,35 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                'django.template.context_processors.request',  # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
+
+# AUTH_USER_MODEL = 'auth.User'
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For development, print emails to console    
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # Optional email verification
+ACCOUNT_EMAIL_REQUIRED = True  # Require email for account creation
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # Mandatory email verification
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True  # Require email confirmation
+ACCOUNT_USERNAME_MIN_LENGTH = 4  # Minimum username length
+LOGIN_URL = '/accounts/login/'  # Require username for account creation
+LOGIN_REDIRECT_URL = '/'  # Redirect URL after successful login
+
 
 WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 
