@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'allauth',  # Django allauth for authentication and registration
     'allauth.account',  # Django allauth account management
     'allauth.socialaccount',  # Django allauth social account management
+    
     'home',  # Your home app
 ]
 
