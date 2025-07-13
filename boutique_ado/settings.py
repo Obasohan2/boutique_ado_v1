@@ -83,7 +83,7 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For development, print emails to console    
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For development, print emails to console
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # Optional email verification
 ACCOUNT_EMAIL_REQUIRED = True  # Require email for account creation
