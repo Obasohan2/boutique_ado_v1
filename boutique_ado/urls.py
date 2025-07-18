@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('home.urls')), # Include URLs for the home app
     path('products/', include('products.urls')),  # Include URLs for the products app
     path('bag/', include('bag.urls')),  # Include URLs for the shopping bag app
+    path('checkout/', include('checkout.urls')), # Include URLs for the checkout app
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Serve media files during development
